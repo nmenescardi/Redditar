@@ -1,11 +1,15 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import MainView from '../components/layout/MainView';
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <h1>Main View</h1>
+        <MainView />
+      </Route>
+      <Route path="*">
+        <Redirect to="/" />
       </Route>
     </Switch>
   );
