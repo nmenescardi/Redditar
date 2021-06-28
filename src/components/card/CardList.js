@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Spinner from '../extra/Spinner';
 import Pagination from 'react-js-pagination';
 import Paginator from '../../utils/Paginator';
+import { pageSize } from '../../utils/config';
 
 const CardList = ({ posts, loading }) => {
   const [currentPosts, setCurrentPosts] = useState([]);
@@ -12,30 +13,41 @@ const CardList = ({ posts, loading }) => {
 
   useEffect(() => {
     if (posts.length) {
-      setCurrentPosts([...Paginator(posts, offset, 10).data]);
+      setCurrentPosts([...Paginator(posts, offset, pageSize)]);
     } else {
       setCurrentPosts([]);
     }
-  }, [posts]);
+  }, [posts, offset]);
+
+  const handlePageChange = (pageNumber) => {
+    const newOffset = (pageNumber - 1) * pageSize;
+    const data = Paginator(posts, newOffset, pageSize);
+    setActivePage(pageNumber);
+    setOffset(newOffset);
+    setCurrentPosts([...data]);
+  };
 
   return (
     <div className="card-list">
       <Spinner loading={loading} />
+
       {currentPosts.map((post, i) => (
         <Card key={post.data.id} postId={post.data.id} />
       ))}
 
-      <div className="card-list__paginator">
-        <Pagination
-          activePage={activePage}
-          itemsCountPerPage={10}
-          totalItemsCount={posts.length}
-          pageRangeDisplayed={5}
-          onChange={(count) => console.log(count)}
-          itemClass="page-item"
-          linkClass="page-link"
-        />
-      </div>
+      {currentPosts.length && (
+        <div className="card-list__paginator">
+          <Pagination
+            activePage={activePage}
+            itemsCountPerPage={pageSize}
+            totalItemsCount={posts.length}
+            pageRangeDisplayed={5}
+            onChange={(count) => handlePageChange(count)}
+            itemClass="page-item"
+            linkClass="page-link"
+          />
+        </div>
+      )}
     </div>
   );
 };
