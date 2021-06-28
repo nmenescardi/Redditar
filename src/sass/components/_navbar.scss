@@ -1,0 +1,22 @@
+.navbar {
+  &__menu {
+    width: 3.8rem;
+    height: 3.8rem;
+    background: $color-gray-dark;
+    border-radius: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+  &__bar {
+    width: 70%;
+    height: 2px;
+    background: $color-white;
+  }
+}
