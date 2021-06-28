@@ -1,0 +1,12 @@
+/*
+  Sass structure using an adaptation of the '7–1 Pattern'
+*/
+
+@import 'sass/abstracts/variables';
+@import 'sass/abstracts/mixins';
+@import 'sass/base/fonts';
+@import 'sass/base/reset';
+@import 'sass/layouts/main_view';
+@import 'sass/layouts/body';
+@import 'sass/layouts/sidebar';
+@import 'sass/pages/home';
