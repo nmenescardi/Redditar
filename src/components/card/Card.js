@@ -6,10 +6,12 @@ import Thumbnail from './Thumbnail';
 import Comments from './Comments';
 import TimeAgo from './TimeAgo';
 import { FaChevronRight, FaTimes } from 'react-icons/fa';
+import { connect } from 'react-redux';
+import { getSinglePost } from '../../store/posts/selector';
 
-const Card = ({ postId }) => {
+const Card = ({ post }) => {
   useEffect(() => {
-    /* console.log(postId); */
+    console.log(post.id);
   }, []);
   return (
     <div className="card card--visited">
@@ -18,16 +20,16 @@ const Card = ({ postId }) => {
           <div className="card__meta">
             <div className="card__title-wrapper">
               <Visited className="card__visited" />
-              <Author author="TheAuthor" className="card__author" />
+              <Author author={post.author} className="card__author" />
             </div>
-            <TimeAgo className="card__time" time="16 hours ago" />
+            <TimeAgo className="card__time" time={post.created} />
           </div>
           <Thumbnail
-            src={`https://picsum.photos/200/200?random=${postId}`}
+            src={post.thumbnail}
             alt="an image"
             className="card__thumbnail"
           />
-          <Title title="Some Title" className="card__title" />
+          <Title title={post.title} className="card__title" />
         </div>
 
         <div className="card__arrow">
@@ -40,11 +42,16 @@ const Card = ({ postId }) => {
           <FaTimes />
           <span>Dismiss</span>
         </div>
-        <Comments nro="12" className="card__comments" />
+        <Comments nro={post.num_comments} className="card__comments" />
       </div>
       <hr className="card__divider" />
     </div>
   );
 };
 
-export default Card;
+const mapStateToProps = (state, props) => {
+  return {
+    post: getSinglePost(state, props.postId),
+  };
+};
+export default connect(mapStateToProps)(Card);

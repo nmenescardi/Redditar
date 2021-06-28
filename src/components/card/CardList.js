@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Card from './Card';
-
 import { connect } from 'react-redux';
 
 const CardList = ({ posts }) => {
