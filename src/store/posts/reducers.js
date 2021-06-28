@@ -1,9 +1,15 @@
-import { POSTS_SET_DATA, POSTS_SET_LOADING, VISITED_ADD_POST } from './types';
+import {
+  POSTS_SET_DATA,
+  POSTS_SET_LOADING,
+  VISITED_ADD_POST,
+  LAYOUT_TOGGLE_SIDEBAR,
+} from './types';
 
 const initialState = {
   posts: [],
   visited: [],
   loading: false,
+  sidebarOpen: true,
 };
 
 export function postReducer(state = initialState, action) {
@@ -28,6 +34,13 @@ export function postReducer(state = initialState, action) {
           (v, i, a) => a.indexOf(v) === i
         ),
       };
+
+    case LAYOUT_TOGGLE_SIDEBAR:
+      return {
+        ...state,
+        sidebarOpen: !state.sidebarOpen,
+      };
+
     default:
       return state;
   }

@@ -1,10 +1,15 @@
 import React from 'react';
+import isValidURL from '../../utils/urlValidator';
 
 const Thumbnail = ({ src, alt, ...rest }) => {
   return (
-    <div {...rest}>
-      <img src={src} alt={alt} />
-    </div>
+    <>
+      {src && isValidURL(src) && (
+        <div {...rest}>
+          <img src={src} alt={alt} />
+        </div>
+      )}
+    </>
   );
 };
 

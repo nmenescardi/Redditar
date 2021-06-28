@@ -2,10 +2,11 @@ import React from 'react';
 import Navbar from '../navbar/Navbar';
 import CardList from '../card/CardList';
 import DismissAll from '../extra/DismissAll';
+import { connect } from 'react-redux';
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarOpen }) => {
   return (
-    <section className="sidebar sidebar--open">
+    <section className={`sidebar ${sidebarOpen ? 'sidebar--open' : null} `}>
       <Navbar />
       <CardList />
       <DismissAll />
@@ -13,4 +14,7 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+const mapStateToProps = (state) => ({
+  sidebarOpen: state.posts.sidebarOpen,
+});
+export default connect(mapStateToProps)(Sidebar);

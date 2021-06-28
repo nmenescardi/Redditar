@@ -1,4 +1,9 @@
-import { POSTS_SET_DATA, POSTS_SET_LOADING, VISITED_ADD_POST } from './types';
+import {
+  POSTS_SET_DATA,
+  POSTS_SET_LOADING,
+  VISITED_ADD_POST,
+  LAYOUT_TOGGLE_SIDEBAR,
+} from './types';
 
 import { GET_POSTS_URL } from '../../utils/config';
 
@@ -18,6 +23,11 @@ export function visitedAddPost(postId) {
   return {
     type: VISITED_ADD_POST,
     payload: postId,
+  };
+}
+export function layoutToggleSidebar() {
+  return {
+    type: LAYOUT_TOGGLE_SIDEBAR,
   };
 }
 

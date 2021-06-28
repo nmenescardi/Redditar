@@ -32,7 +32,7 @@ const Card = ({ post, visitedAddPost, wasVisited }) => {
           </div>
           <Thumbnail
             src={post.thumbnail}
-            alt="an image"
+            alt={`${post.title} - Thumbnail`}
             className="card__thumbnail"
           />
           <Title title={post.title} className="card__title" />
