@@ -7,15 +7,15 @@ import Comments from './Comments';
 import TimeAgo from './TimeAgo';
 import { FaChevronRight, FaTimes } from 'react-icons/fa';
 import { connect } from 'react-redux';
-import { getSinglePost } from '../../store/posts/selector';
+import { getSinglePost, wasVisited } from '../../store/posts/selector';
 import { visitedAddPost } from '../../store/posts/actions';
 
-const Card = ({ post, visitedAddPost }) => {
+const Card = ({ post, visitedAddPost, wasVisited }) => {
   /* useEffect(() => {
     console.log(post.id);
   }, []); */
   return (
-    <div className="card card--visited">
+    <div className={`card ${wasVisited && 'card--visited'}`}>
       <div
         className="card__header"
         onClick={() => {
@@ -58,6 +58,7 @@ const Card = ({ post, visitedAddPost }) => {
 const mapStateToProps = (state, props) => {
   return {
     post: getSinglePost(state, props.postId),
+    wasVisited: wasVisited(state, props.postId),
   };
 };
 const mapDispatchToProps = {

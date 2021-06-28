@@ -3,3 +3,7 @@ export const getSinglePost = (state, postId) => {
   console.log(`postData.data`, postData.data);
   return postData.data;
 };
+
+export const wasVisited = (state, postId) => {
+  return state.posts.visited.includes(postId);
+};
