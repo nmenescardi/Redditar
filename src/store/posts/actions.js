@@ -1,4 +1,4 @@
-import { POSTS_SET_DATA, POSTS_SET_LOADING } from './types';
+import { POSTS_SET_DATA, POSTS_SET_LOADING, VISITED_ADD_POST } from './types';
 
 import { GET_POSTS_URL } from '../../utils/config';
 
@@ -8,11 +8,16 @@ export function postSetData(posts) {
     payload: posts,
   };
 }
-
 export function postSetLoading(loadingFlag) {
   return {
     type: POSTS_SET_LOADING,
     payload: loadingFlag,
+  };
+}
+export function visitedAddPost(postId) {
+  return {
+    type: VISITED_ADD_POST,
+    payload: postId,
   };
 }
 

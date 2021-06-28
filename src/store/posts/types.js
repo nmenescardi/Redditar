@@ -1,2 +1,3 @@
 export const POSTS_SET_DATA = 'POSTS_SET_DATA';
 export const POSTS_SET_LOADING = 'POSTS_SET_LOADING';
+export const VISITED_ADD_POST = 'VISITED_ADD_POST';

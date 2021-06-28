@@ -8,14 +8,20 @@ import TimeAgo from './TimeAgo';
 import { FaChevronRight, FaTimes } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { getSinglePost } from '../../store/posts/selector';
+import { visitedAddPost } from '../../store/posts/actions';
 
-const Card = ({ post }) => {
-  useEffect(() => {
+const Card = ({ post, visitedAddPost }) => {
+  /* useEffect(() => {
     console.log(post.id);
-  }, []);
+  }, []); */
   return (
     <div className="card card--visited">
-      <div className="card__header">
+      <div
+        className="card__header"
+        onClick={() => {
+          visitedAddPost(post.id);
+        }}
+      >
         <div className="card__content">
           <div className="card__meta">
             <div className="card__title-wrapper">
@@ -54,4 +60,7 @@ const mapStateToProps = (state, props) => {
     post: getSinglePost(state, props.postId),
   };
 };
-export default connect(mapStateToProps)(Card);
+const mapDispatchToProps = {
+  visitedAddPost,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
