@@ -3,4 +3,42 @@
   height: 100%;
   overflow-y: auto;
   padding-bottom: 140px;
+
+  &__paginator {
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+      display: flex;
+      padding-left: 0;
+      list-style: none;
+      border-radius: 0.25rem;
+
+      .page-link {
+        position: relative;
+        display: block;
+        padding: 0.75rem 1rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: $color-unvisited;
+        background-color: $color-white;
+        border: 1px solid $color-gray-bg;
+        background-color: $color-gray-middle;
+        border-color: $color-gray-middle;
+        text-decoration: none;
+      }
+
+      .active {
+        border-color: $color-white;
+        .page-link {
+          z-index: 3;
+          color: $color-white;
+          background-color: $color-unvisited;
+          border-color: $color-unvisited;
+        }
+      }
+    }
+  }
 }
