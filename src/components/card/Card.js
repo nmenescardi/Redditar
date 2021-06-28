@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Visited from './Visited';
 import Title from './Title';
 import Author from './Author';
@@ -8,6 +8,9 @@ import TimeAgo from './TimeAgo';
 import { FaChevronRight, FaTimes } from 'react-icons/fa';
 
 const Card = ({ postId }) => {
+  useEffect(() => {
+    /* console.log(postId); */
+  }, []);
   return (
     <div className="card card--visited">
       <div className="card__header">
