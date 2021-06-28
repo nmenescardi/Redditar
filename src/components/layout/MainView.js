@@ -1,7 +1,14 @@
 import React from 'react';
+import Sidebar from './Sidebar';
+import Home from './Home';
 
 const MainView = () => {
-  return <h1>Main View</h1>;
+  return (
+    <main className="main-view">
+      <Sidebar />
+      <Home />
+    </main>
+  );
 };
 
 export default MainView;
