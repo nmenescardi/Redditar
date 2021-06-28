@@ -14,8 +14,8 @@ const Card = ({ postId }) => {
         <div className="card__content">
           <div className="card__meta">
             <div className="card__title-wrapper">
-              <Visited wasVisited={true} className="card__visited" />
-              <Author title="TheAuthor" className="card__author" />
+              <Visited className="card__visited" />
+              <Author author="TheAuthor" className="card__author" />
             </div>
             <TimeAgo className="card__time" time="16 hours ago" />
           </div>

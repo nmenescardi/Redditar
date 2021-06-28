@@ -35,11 +35,13 @@
   }
 
   &__author {
-    color: $color-gray-3;
+    color: $color-white;
     font-size: 1.6rem;
+    margin-left: 0.5rem;
   }
   &__title {
     margin-bottom: 0px;
+    color: $color-gray-3;
   }
   &__arrow svg {
     color: $color-unvisited;
@@ -73,6 +75,11 @@
     margin: 2.75rem 0;
   }
 
+  &__visited svg {
+    color: $color-unvisited;
+  }
+
+  &--visited &__visited svg,
   &--visited &__dismiss svg,
   &--visited &__arrow svg {
     color: $color-visited;
