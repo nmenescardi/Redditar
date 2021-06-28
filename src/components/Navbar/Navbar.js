@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className="navbar__bar"></div>
         <div className="navbar__bar"></div>
       </div>
-      <h1>Redditar</h1>
+      <h1 className="navbar__title">Redditar</h1>
     </section>
   );
 };

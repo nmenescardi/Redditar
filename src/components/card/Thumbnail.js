@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Thumbnail = ({ src, alt }) => {
+const Thumbnail = ({ src, alt, ...rest }) => {
   return (
-    <div>
+    <div {...rest}>
       <img src={src} alt={alt} />
     </div>
   );

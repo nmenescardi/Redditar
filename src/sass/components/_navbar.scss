@@ -1,4 +1,12 @@
 .navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #444;
+  padding: 2rem;
+  color: #ffff;
+
   &__menu {
     width: 3.8rem;
     height: 3.8rem;
@@ -14,9 +22,18 @@
     top: 1.5rem;
     left: 1.5rem;
   }
+
   &__bar {
     width: 70%;
-    height: 2px;
+    height: 3px;
     background: $color-white;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0.5rem;
   }
 }

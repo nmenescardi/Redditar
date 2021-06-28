@@ -1,0 +1,83 @@
+.card {
+  padding: 0 2rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    cursor: pointer;
+  }
+
+  &__content {
+    width: 70%;
+  }
+
+  &__meta {
+    border-left: 2px solid $color-unvisited;
+    padding-left: 1.3rem;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__time {
+    color: $color-muted;
+    font-size: 1.4rem;
+  }
+  &__thumbnail img {
+    width: 100px;
+    height: 100px;
+    margin: 1.2rem 0;
+  }
+
+  &__author {
+    color: $color-gray-3;
+    font-size: 1.6rem;
+  }
+  &__title {
+    margin-bottom: 0px;
+  }
+  &__arrow svg {
+    color: $color-unvisited;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__dismiss {
+    border: 1px solid $color-gray-4;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    span {
+      color: $color-gray-3;
+      margin-left: 0.7rem;
+    }
+    svg {
+      color: $color-unvisited;
+    }
+  }
+
+  &__comments {
+    color: $color-gray-3;
+  }
+
+  &__divider {
+    background-color: $color-gray-4;
+    margin: 2.75rem 0;
+  }
+
+  &--visited &__dismiss svg,
+  &--visited &__arrow svg {
+    color: $color-visited;
+  }
+  &--visited &__meta {
+    border-color: $color-visited;
+  }
+}
