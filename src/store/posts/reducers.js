@@ -5,10 +5,12 @@ import {
   LAYOUT_TOGGLE_SIDEBAR,
   POSTS_DISMISS,
   POSTS_DISMISS_ALL,
+  POSTS_SELECT,
 } from './types';
 
 const initialState = {
   posts: [],
+  postId: '',
   visited: [],
   dismissed: [],
   loading: false,
@@ -59,6 +61,12 @@ export function postReducer(state = initialState, action) {
       return {
         ...state,
         sidebarOpen: !state.sidebarOpen,
+      };
+
+    case POSTS_SELECT:
+      return {
+        ...state,
+        postId: action.payload,
       };
 
     default:

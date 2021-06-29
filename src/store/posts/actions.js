@@ -5,6 +5,7 @@ import {
   LAYOUT_TOGGLE_SIDEBAR,
   POSTS_DISMISS,
   POSTS_DISMISS_ALL,
+  POSTS_SELECT,
 } from './types';
 
 import { GET_POSTS_URL } from '../../utils/config';
@@ -41,6 +42,12 @@ export function postDismiss(postId) {
 export function postDismissAll() {
   return {
     type: POSTS_DISMISS_ALL,
+  };
+}
+export function selectPost(postId) {
+  return {
+    type: POSTS_SELECT,
+    payload: postId,
   };
 }
 

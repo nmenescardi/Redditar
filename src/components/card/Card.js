@@ -8,15 +8,26 @@ import TimeAgo from './TimeAgo';
 import { FaChevronRight, FaTimes } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { getSinglePost, wasVisited } from '../../store/posts/selector';
-import { visitedAddPost, postDismiss } from '../../store/posts/actions';
+import {
+  visitedAddPost,
+  postDismiss,
+  selectPost,
+} from '../../store/posts/actions';
 
-const Card = ({ post, visitedAddPost, wasVisited, postDismiss }) => {
+const Card = ({
+  post,
+  visitedAddPost,
+  wasVisited,
+  postDismiss,
+  selectPost,
+}) => {
   return (
     <div className={`card ${wasVisited && 'card--visited'}`}>
       <div
         className="card__header"
         onClick={() => {
           visitedAddPost(post.id);
+          selectPost(post.id);
         }}
       >
         <div className="card__content">
@@ -61,5 +72,6 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = {
   visitedAddPost,
   postDismiss,
+  selectPost,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
