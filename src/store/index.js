@@ -6,15 +6,15 @@ import { rootReducer } from './posts/reducers';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['app'],
-  blacklist: ['posts'],
-};
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 const Store = () => {
+  const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['app'],
+    blacklist: ['posts'],
+  };
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
+
   const middlewares = [thunkMiddleware, logger];
   const middleWareEnhancer = applyMiddleware(...middlewares);
   const store = createStore(
@@ -22,6 +22,7 @@ const Store = () => {
     composeWithDevTools(middleWareEnhancer)
   );
   const persistor = persistStore(store);
+
   return { store, persistor };
 };
 export default Store;
