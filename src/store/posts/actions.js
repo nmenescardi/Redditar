@@ -52,18 +52,12 @@ export function selectPost(postId) {
 }
 
 export const getPosts = () => (dispatch, getState) => {
-  const { posts } = getState().posts;
+  dispatch(postSetLoading(true));
 
-  if (posts.length === 0) {
-    dispatch(postSetLoading(true));
-
-    fetch(GET_POSTS_URL)
-      .then((request) => request.json())
-      .then((data) => {
-        dispatch(postSetData(data.data.children));
-        dispatch(postSetLoading(false));
-      });
-  } else {
-    dispatch(postSetData(posts));
-  }
+  fetch(GET_POSTS_URL)
+    .then((request) => request.json())
+    .then((data) => {
+      dispatch(postSetData(data.data.children));
+      dispatch(postSetLoading(false));
+    });
 };
