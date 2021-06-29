@@ -15,11 +15,12 @@ const Home = ({ post, sidebarOpen }) => {
         {post?.id ? (
           <Post post={post} />
         ) : (
-          <img
-            src="/images/bg/mpa-the-result.gif"
-            alt="No post selected animation"
-            style={{ height: '100%', width: '100%' }}
-          />
+          <div className="home__empty-animation">
+            <img
+              src="/images/bg/mpa-the-result.gif"
+              alt="No post selected animation"
+            />
+          </div>
         )}
       </div>
     </section>
