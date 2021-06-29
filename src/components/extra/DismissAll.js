@@ -5,7 +5,7 @@ import { postDismissAll } from '../../store/posts/actions';
 const DismissAll = ({ postDismissAll, ...rest }) => {
   return (
     <div {...rest} onClick={() => postDismissAll()}>
-      <button>Dismiss All</button>
+      <span>Dismiss All</span>
     </div>
   );
 };

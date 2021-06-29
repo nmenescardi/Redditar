@@ -11,7 +11,7 @@ const Sidebar = ({ sidebarOpen }) => {
       <Navbar />
       <CardList />
 
-      <DismissAll className="sidebar__footer" />
+      <DismissAll className="sidebar__dimiss-all" />
     </section>
   );
 };
