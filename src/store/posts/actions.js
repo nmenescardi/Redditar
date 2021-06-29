@@ -3,6 +3,7 @@ import {
   POSTS_SET_LOADING,
   VISITED_ADD_POST,
   LAYOUT_TOGGLE_SIDEBAR,
+  POSTS_DISMISS,
 } from './types';
 
 import { GET_POSTS_URL } from '../../utils/config';
@@ -28,6 +29,12 @@ export function visitedAddPost(postId) {
 export function layoutToggleSidebar() {
   return {
     type: LAYOUT_TOGGLE_SIDEBAR,
+  };
+}
+export function postDismiss(postId) {
+  return {
+    type: POSTS_DISMISS,
+    payload: postId,
   };
 }
 
