@@ -9,7 +9,8 @@ const Sidebar = ({ sidebarOpen }) => {
     <section className={`sidebar ${sidebarOpen ? 'sidebar--open' : null} `}>
       <Navbar />
       <CardList />
-      <DismissAll />
+
+      <DismissAll className="sidebar__footer" />
     </section>
   );
 };

@@ -4,6 +4,7 @@ import {
   VISITED_ADD_POST,
   LAYOUT_TOGGLE_SIDEBAR,
   POSTS_DISMISS,
+  POSTS_DISMISS_ALL,
 } from './types';
 
 const initialState = {
@@ -38,11 +39,18 @@ export function postReducer(state = initialState, action) {
       };
 
     case POSTS_DISMISS:
-      console.log(`action.payload`, action.payload);
       return {
         ...state,
-        // Make it unique
         dismissed: [...state.dismissed, action.payload].filter(
+          (v, i, a) => a.indexOf(v) === i
+        ),
+      };
+
+    case POSTS_DISMISS_ALL:
+      const allPostsId = state.posts.map((post) => post.data.id);
+      return {
+        ...state,
+        dismissed: [...state.dismissed, ...allPostsId].filter(
           (v, i, a) => a.indexOf(v) === i
         ),
       };

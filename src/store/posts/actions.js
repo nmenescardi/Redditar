@@ -4,6 +4,7 @@ import {
   VISITED_ADD_POST,
   LAYOUT_TOGGLE_SIDEBAR,
   POSTS_DISMISS,
+  POSTS_DISMISS_ALL,
 } from './types';
 
 import { GET_POSTS_URL } from '../../utils/config';
@@ -35,6 +36,11 @@ export function postDismiss(postId) {
   return {
     type: POSTS_DISMISS,
     payload: postId,
+  };
+}
+export function postDismissAll() {
+  return {
+    type: POSTS_DISMISS_ALL,
   };
 }
 

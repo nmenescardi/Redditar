@@ -1,6 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { postDismissAll } from '../../store/posts/actions';
 
-const DismissAll = () => {
-  return <button>Dismiss All</button>;
+const DismissAll = ({ postDismissAll, ...rest }) => {
+  return (
+    <div {...rest} onClick={() => postDismissAll()}>
+      <button>Dismiss All</button>
+    </div>
+  );
 };
-export default DismissAll;
+
+const mapDispatchToProps = {
+  postDismissAll,
+};
+export default connect(null, mapDispatchToProps)(DismissAll);
