@@ -33,10 +33,10 @@ export function layoutToggleSidebar() {
     type: LAYOUT_TOGGLE_SIDEBAR,
   };
 }
-export function postDismiss(postId) {
+export function postDismiss(postIds) {
   return {
     type: POSTS_DISMISS,
-    payload: postId,
+    payload: postIds instanceof Array ? postIds : [postIds],
   };
 }
 export function postDismissAll() {

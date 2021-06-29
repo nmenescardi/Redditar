@@ -54,16 +54,7 @@ function appReducer(state = appInitialState, action) {
     case POSTS_DISMISS:
       return {
         ...state,
-        dismissed: [...state.dismissed, action.payload].filter(
-          (v, i, a) => a.indexOf(v) === i
-        ),
-      };
-
-    case POSTS_DISMISS_ALL:
-      const allPostsId = state.posts.map((post) => post.data.id);
-      return {
-        ...state,
-        dismissed: [...state.dismissed, ...allPostsId].filter(
+        dismissed: [...state.dismissed, ...action.payload].filter(
           (v, i, a) => a.indexOf(v) === i
         ),
       };
