@@ -5,7 +5,7 @@ import Spinner from '../extra/Spinner';
 import Pagination from 'react-js-pagination';
 import Paginator from '../../utils/Paginator';
 import { pageSize } from '../../utils/config';
-import { getPostsToShow } from '../../store/posts/selector';
+import { getPostsToShow, isLoading } from '../../store/posts/selector';
 
 const CardList = ({ posts, loading }) => {
   const [currentPosts, setCurrentPosts] = useState([]);
@@ -55,6 +55,6 @@ const CardList = ({ posts, loading }) => {
 
 const mapStateToProps = (state) => ({
   posts: getPostsToShow(state),
-  loading: state.posts.loading,
+  loading: isLoading(state),
 });
 export default connect(mapStateToProps)(CardList);

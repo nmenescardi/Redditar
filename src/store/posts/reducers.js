@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import {
   POSTS_SET_DATA,
   POSTS_SET_LOADING,
@@ -8,16 +9,12 @@ import {
   POSTS_SELECT,
 } from './types';
 
-const initialState = {
+const postsInitialState = {
   posts: [],
-  postId: '',
-  visited: [],
-  dismissed: [],
   loading: false,
-  sidebarOpen: true,
 };
 
-export function postReducer(state = initialState, action) {
+function postsReducer(state = postsInitialState, action) {
   switch (action.type) {
     case POSTS_SET_DATA:
       return {
@@ -31,6 +28,20 @@ export function postReducer(state = initialState, action) {
         loading: action.payload,
       };
 
+    default:
+      return state;
+  }
+}
+
+const appInitialState = {
+  selectedPostId: '',
+  visited: [],
+  dismissed: [],
+  sidebarOpen: true,
+};
+
+function appReducer(state = appInitialState, action) {
+  switch (action.type) {
     case VISITED_ADD_POST:
       return {
         ...state,
@@ -66,10 +77,15 @@ export function postReducer(state = initialState, action) {
     case POSTS_SELECT:
       return {
         ...state,
-        postId: action.payload,
+        selectedPostId: action.payload,
       };
 
     default:
       return state;
   }
 }
+
+export const rootReducer = combineReducers({
+  posts: postsReducer,
+  app: appReducer,
+});

@@ -2,7 +2,11 @@ import React from 'react';
 import Post from '../post/Post';
 
 import { connect } from 'react-redux';
-import { getSinglePost } from '../../store/posts/selector';
+import {
+  getSinglePost,
+  isSidebarOpen,
+  getSelectedPostId,
+} from '../../store/posts/selector';
 
 const Home = ({ post, sidebarOpen }) => {
   return (
@@ -24,8 +28,8 @@ const Home = ({ post, sidebarOpen }) => {
 
 const mapStateToProps = (state) => {
   return {
-    post: getSinglePost(state, state.posts.postId),
-    sidebarOpen: state.posts.sidebarOpen,
+    post: getSinglePost(state, getSelectedPostId(state)),
+    sidebarOpen: isSidebarOpen(state),
   };
 };
 

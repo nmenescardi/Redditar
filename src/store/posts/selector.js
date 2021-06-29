@@ -4,13 +4,25 @@ export const getSinglePost = (state, postId) => {
 };
 
 export const wasVisited = (state, postId) => {
-  return state.posts.visited.includes(postId);
+  return state.app.visited.includes(postId);
 };
 
 export const getPostsToShow = (state) => {
   const postsToShow = state.posts.posts.filter(
-    (post) => !state.posts.dismissed.includes(post.data.id)
+    (post) => !state.app.dismissed.includes(post.data.id)
   );
 
   return postsToShow;
+};
+
+export const isSidebarOpen = (state) => {
+  return state.app.sidebarOpen;
+};
+
+export const getSelectedPostId = (state) => {
+  return state.app.selectedPostId;
+};
+
+export const isLoading = (state) => {
+  return state.posts.loading;
 };

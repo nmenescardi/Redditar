@@ -3,6 +3,7 @@ import Navbar from '../navbar/Navbar';
 import CardList from '../card/CardList';
 import DismissAll from '../extra/DismissAll';
 import { connect } from 'react-redux';
+import { isSidebarOpen } from '../../store/posts/selector';
 
 const Sidebar = ({ sidebarOpen }) => {
   return (
@@ -16,6 +17,6 @@ const Sidebar = ({ sidebarOpen }) => {
 };
 
 const mapStateToProps = (state) => ({
-  sidebarOpen: state.posts.sidebarOpen,
+  sidebarOpen: isSidebarOpen(state),
 });
 export default connect(mapStateToProps)(Sidebar);
