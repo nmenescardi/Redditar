@@ -6,3 +6,11 @@ export const getSinglePost = (state, postId) => {
 export const wasVisited = (state, postId) => {
   return state.posts.visited.includes(postId);
 };
+
+export const getPostsToShow = (state) => {
+  const postsToShow = state.posts.posts.filter(
+    (post) => !state.posts.dismissed.includes(post.data.id)
+  );
+
+  return postsToShow;
+};
