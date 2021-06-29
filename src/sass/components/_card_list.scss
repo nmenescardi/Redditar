@@ -4,6 +4,23 @@
   overflow-y: auto;
   padding-bottom: 14rem;
 
+  // Animation
+  .post-exit {
+    opacity: 1;
+  }
+  .post-enter {
+    opacity: 0;
+  }
+  .post-exit-active {
+    opacity: 0;
+    transition: all 350ms ease-in;
+  }
+  .post-enter-active {
+    opacity: 1;
+    transition: all 350ms ease-in;
+  }
+
+  // Scrollbar
   &::-webkit-scrollbar {
     width: 1.2rem;
   }

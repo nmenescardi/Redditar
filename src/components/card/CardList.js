@@ -6,6 +6,7 @@ import Pagination from 'react-js-pagination';
 import Paginator from '../../utils/Paginator';
 import { pageSize } from '../../utils/config';
 import { getPostsToShow, isLoading } from '../../store/posts/selector';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const CardList = ({ posts, loading }) => {
   const [currentPosts, setCurrentPosts] = useState([]);
@@ -32,9 +33,13 @@ const CardList = ({ posts, loading }) => {
     <div className="card-list">
       <Spinner loading={loading} />
 
-      {currentPosts.map((post, i) => (
-        <Card key={post.data.id} postId={post.data.id} />
-      ))}
+      <TransitionGroup>
+        {currentPosts.map((post, i) => (
+          <CSSTransition classNames="post" timeout={350} key={post.data.id}>
+            <Card postId={post.data.id} />
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
 
       {currentPosts.length && (
         <div className="card-list__paginator">
