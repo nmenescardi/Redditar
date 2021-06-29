@@ -4,26 +4,25 @@ import isValidURL from '../../utils/urlValidator';
 
 const Post = ({ post }) => {
   return (
-    <div className="post__deck">
-      <div className="post__wrapper shadow">
+    <div className="post">
+      <div className="post__wrapper">
         {post && post.thumbnail && isValidURL(post.thumbnail) && (
           <a href={post.thumbnail}>
-            <img
-              className="post__image"
-              src={post.thumbnail}
-              alt={`${post.title} - Img`}
-            />
+            <div className="post__image">
+              <img src={post.thumbnail} alt={`${post.title} - Img`} />
+            </div>
           </a>
         )}
         <div className="post__body">
           <h5 className="post__title">{post.title}</h5>
-          <p className="post__title">Comments: {post.num_comments}</p>
         </div>
         <div className="post__footer">
-          <span>
-            {post.author} <br />
+          <div className="post__meta">
+            <span className="post__author">{post.author}</span>
             <small>{fromNow(post.created)}</small>
-          </span>
+          </div>
+
+          <span className="post__comments">Comments: {post.num_comments}</span>
         </div>
       </div>
     </div>

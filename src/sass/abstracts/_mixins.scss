@@ -1,0 +1,19 @@
+@mixin aspect-ratio($aspect-ratio: 66.66%) {
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: $aspect-ratio;
+  }
+
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
