@@ -5,6 +5,7 @@ import Author from './Author';
 import Thumbnail from './Thumbnail';
 import Comments from './Comments';
 import TimeAgo from './TimeAgo';
+import isMobile from '../../utils/isMobile';
 import { FaChevronRight, FaTimes } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { getSinglePost, wasVisited } from '../../store/posts/selector';
@@ -12,6 +13,7 @@ import {
   visitedAddPost,
   postDismiss,
   selectPost,
+  layoutToggleSidebar,
 } from '../../store/posts/actions';
 
 const Card = ({
@@ -20,6 +22,7 @@ const Card = ({
   wasVisited,
   postDismiss,
   selectPost,
+  layoutToggleSidebar,
 }) => {
   return (
     <div className={`card ${wasVisited && 'card--visited'}`}>
@@ -28,6 +31,7 @@ const Card = ({
         onClick={() => {
           visitedAddPost(post.id);
           selectPost(post.id);
+          isMobile() && layoutToggleSidebar();
         }}
       >
         <div className="card__content">
@@ -73,5 +77,6 @@ const mapDispatchToProps = {
   visitedAddPost,
   postDismiss,
   selectPost,
+  layoutToggleSidebar,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
