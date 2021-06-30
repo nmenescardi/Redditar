@@ -1,6 +1,7 @@
 import React from 'react';
 import fromNow from '../../utils/fromNow';
 import isValidURL from '../../utils/urlValidator';
+import commentsLabel from '../../utils/commentsLabel';
 
 const Post = ({ post }) => {
   return (
@@ -22,7 +23,9 @@ const Post = ({ post }) => {
             <small>{fromNow(post.created)}</small>
           </div>
 
-          <span className="post__comments">Comments: {post.num_comments}</span>
+          <span className="post__comments">
+            {commentsLabel(post.num_comments)}
+          </span>
         </div>
       </div>
     </div>
