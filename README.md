@@ -1,6 +1,6 @@
 # Redditar
 
-Reddit feed to show 50 top posts.
+Reddit feed app to show 50 top posts. It can be visited [here](https://redditar.herokuapp.com/).
 
 This app is made using React and Redux to handle the state. Some features:
 
