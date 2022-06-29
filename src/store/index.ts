@@ -5,7 +5,7 @@ import logger from 'redux-logger';
 import { rootReducer } from './posts/reducers';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { dimissAllMiddleware } from './posts/middlewares';
+import { dismissAllMiddleware } from './posts/middlewares';
 
 const Store = () => {
   const persistConfig = {
@@ -16,7 +16,7 @@ const Store = () => {
   };
   const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-  const middlewares = [thunkMiddleware, logger, dimissAllMiddleware];
+  const middlewares = [thunkMiddleware, logger, dismissAllMiddleware];
   const middleWareEnhancer = applyMiddleware(...middlewares);
   const store = createStore(
     persistedReducer,

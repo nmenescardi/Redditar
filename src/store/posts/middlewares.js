@@ -1,7 +1,7 @@
 import { POSTS_DISMISS_ALL } from './types';
 import { postDismiss } from './actions';
 
-export const dimissAllMiddleware = (store) => (next) => (action) => {
+export const dismissAllMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
 
   if (POSTS_DISMISS_ALL === action.type) {
