@@ -13,7 +13,7 @@ export interface Post {
   data: PostData;
 }
 
-export interface State {
+export interface Store {
   posts: {
     posts: Post[];
     loading: boolean;

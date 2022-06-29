@@ -1,15 +1,15 @@
-import { Post, State } from '../../types';
+import { Post, Store } from '../../types';
 
-export const getSinglePost = (state: State, postId: string) => {
+export const getSinglePost = (state: Store, postId: string) => {
   const postData = state.posts.posts.find((e: Post) => e.data.id === postId);
   return postData?.data;
 };
 
-export const wasVisited = (state: State, postId: string) => {
+export const wasVisited = (state: Store, postId: string) => {
   return state.app.visited.includes(postId);
 };
 
-export const getPostsToShow = (state: State) => {
+export const getPostsToShow = (state: Store) => {
   const postsToShow = state.posts.posts.filter(
     (post: Post) => !state.app.dismissed.includes(post.data.id)
   );
@@ -17,14 +17,14 @@ export const getPostsToShow = (state: State) => {
   return postsToShow;
 };
 
-export const isSidebarOpen = (state: State) => {
+export const isSidebarOpen = (state: Store) => {
   return state.app.sidebarOpen;
 };
 
-export const getSelectedPostId = (state: State) => {
+export const getSelectedPostId = (state: Store) => {
   return state.app.selectedPostId;
 };
 
-export const isLoading = (state: State) => {
+export const isLoading = (state: Store) => {
   return state.posts.loading;
 };

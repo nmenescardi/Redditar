@@ -5,7 +5,6 @@ import {
   VISITED_ADD_POST,
   LAYOUT_TOGGLE_SIDEBAR,
   POSTS_DISMISS,
-  POSTS_DISMISS_ALL,
   POSTS_SELECT,
 } from './types';
 
