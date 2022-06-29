@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Visited from './Visited';
 import Title from './Title';
 import Author from './Author';

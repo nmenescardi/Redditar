@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { css } from '@emotion/react';
 import BounceLoader from 'react-spinners/BounceLoader';
 

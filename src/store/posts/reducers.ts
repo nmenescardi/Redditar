@@ -1,27 +1,20 @@
 import { combineReducers } from 'redux';
-import {
-  POSTS_SET_DATA,
-  POSTS_SET_LOADING,
-  VISITED_ADD_POST,
-  LAYOUT_TOGGLE_SIDEBAR,
-  POSTS_DISMISS,
-  POSTS_SELECT,
-} from './types';
+import { Action } from '../../enums';
 
 const postsInitialState = {
   posts: [],
   loading: false,
 };
 
-function postsReducer(state = postsInitialState, action) {
+function postsReducer(state = postsInitialState, action: any) {
   switch (action.type) {
-    case POSTS_SET_DATA:
+    case Action.POSTS_SET_DATA:
       return {
         ...state,
         posts: [...action.payload],
       };
 
-    case POSTS_SET_LOADING:
+    case Action.POSTS_SET_LOADING:
       return {
         ...state,
         loading: action.payload,
@@ -39,9 +32,9 @@ const appInitialState = {
   sidebarOpen: true,
 };
 
-function appReducer(state = appInitialState, action) {
+function appReducer(state = appInitialState, action: any) {
   switch (action.type) {
-    case VISITED_ADD_POST:
+    case Action.VISITED_ADD_POST:
       return {
         ...state,
         // Make it unique
@@ -50,7 +43,7 @@ function appReducer(state = appInitialState, action) {
         ),
       };
 
-    case POSTS_DISMISS:
+    case Action.POSTS_DISMISS:
       return {
         ...state,
         dismissed: [...state.dismissed, ...action.payload].filter(
@@ -58,13 +51,13 @@ function appReducer(state = appInitialState, action) {
         ),
       };
 
-    case LAYOUT_TOGGLE_SIDEBAR:
+    case Action.LAYOUT_TOGGLE_SIDEBAR:
       return {
         ...state,
         sidebarOpen: !state.sidebarOpen,
       };
 
-    case POSTS_SELECT:
+    case Action.POSTS_SELECT:
       return {
         ...state,
         selectedPostId: action.payload,

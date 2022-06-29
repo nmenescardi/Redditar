@@ -1,11 +1,11 @@
-import { Post, Store } from '../../types';
+import { Post, Store, postID } from '../../types';
 
-export const getSinglePost = (state: Store, postId: string) => {
+export const getSinglePost = (state: Store, postId: postID) => {
   const postData = state.posts.posts.find((e: Post) => e.data.id === postId);
   return postData?.data;
 };
 
-export const wasVisited = (state: Store, postId: string) => {
+export const wasVisited = (state: Store, postId: postID) => {
   return state.app.visited.includes(postId);
 };
 

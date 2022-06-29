@@ -1,4 +1,4 @@
-type postID = string;
+export type postID = string;
 
 interface PostData {
   id: postID;
@@ -25,5 +25,3 @@ export interface Store {
     selectedPostId: string;
   };
 }
-
-// TODO: Enums for action types
