@@ -11,7 +11,11 @@ const override = css`
   margin-top: -50px;
 `;
 
-const Spinner = ({ loading = true }) => {
+type Props = {
+  loading: boolean;
+};
+
+const Spinner: React.FC<Props> = ({ loading = true }) => {
   return (
     <BounceLoader color="#58a6ff" css={override} loading={loading} size={150} />
   );

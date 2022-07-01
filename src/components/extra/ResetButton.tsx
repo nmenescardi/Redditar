@@ -1,6 +1,10 @@
 import React from 'react';
 
-const ResetButton = ({ handleReset }) => {
+type Props = {
+  handleReset: () => void;
+};
+
+const ResetButton: React.FC<Props> = ({ handleReset }) => {
   const refresh = () => {
     handleReset();
     window.location.reload();
