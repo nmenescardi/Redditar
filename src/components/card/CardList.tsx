@@ -7,9 +7,15 @@ import Paginator from '../../utils/Paginator';
 import { pageSize } from '../../utils/config';
 import { getPostsToShow, isLoading } from '../../store/posts/selector';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Post, Store } from '../../types';
 
-const CardList = ({ posts, loading }) => {
-  const [currentPosts, setCurrentPosts] = useState([]);
+type Props = {
+  posts: Post[];
+  loading: boolean;
+};
+
+const CardList: React.FC<Props> = ({ posts, loading }) => {
+  const [currentPosts, setCurrentPosts] = useState<Post[]>([]);
   const [offset, setOffset] = useState(0);
   const [activePage, setActivePage] = useState(1);
 
@@ -21,7 +27,7 @@ const CardList = ({ posts, loading }) => {
     }
   }, [posts, offset]);
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = (pageNumber: number) => {
     const newOffset = (pageNumber - 1) * pageSize;
     const data = Paginator(posts, newOffset, pageSize);
     setActivePage(pageNumber);
@@ -48,7 +54,7 @@ const CardList = ({ posts, loading }) => {
             itemsCountPerPage={pageSize}
             totalItemsCount={posts.length}
             pageRangeDisplayed={5}
-            onChange={(count) => handlePageChange(count)}
+            onChange={(count: number) => handlePageChange(count)}
             itemClass="page-item"
             linkClass="page-link"
           />
@@ -58,7 +64,7 @@ const CardList = ({ posts, loading }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Store) => ({
   posts: getPostsToShow(state),
   loading: isLoading(state),
 });

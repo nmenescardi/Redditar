@@ -26,7 +26,7 @@ export function layoutToggleSidebar() {
     type: Action.LAYOUT_TOGGLE_SIDEBAR,
   };
 }
-export function postDismiss(postIds: postID[]) {
+export function postDismiss(postIds: postID[] | postID) {
   return {
     type: Action.POSTS_DISMISS,
     payload: postIds instanceof Array ? postIds : [postIds],

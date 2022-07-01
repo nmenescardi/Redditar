@@ -15,8 +15,30 @@ import {
   selectPost,
   layoutToggleSidebar,
 } from '../../store/posts/actions';
+import { PostData, postID, Store } from '../../types';
+import { Action } from '../../enums';
 
-const Card = ({
+type Props = {
+  post: PostData;
+  visitedAddPost: (postId: postID) => {
+    type: Action;
+    payload: postID;
+  };
+  wasVisited: boolean;
+  postDismiss: (postId: postID[] | postID) => {
+    type: Action;
+    payload: postID[];
+  };
+  selectPost: (postId: postID) => {
+    type: Action;
+    payload: postID;
+  };
+  layoutToggleSidebar: () => {
+    type: Action;
+  };
+};
+
+const Card: React.FC<Props> = ({
   post,
   visitedAddPost,
   wasVisited,
@@ -67,7 +89,7 @@ const Card = ({
   );
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state: Store, props: any) => {
   return {
     post: getSinglePost(state, props.postId),
     wasVisited: wasVisited(state, props.postId),
@@ -79,4 +101,4 @@ const mapDispatchToProps = {
   selectPost,
   layoutToggleSidebar,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card as any);

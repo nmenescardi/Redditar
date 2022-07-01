@@ -1,7 +1,12 @@
 import React from 'react';
 import fromNow from '../../utils/fromNow';
 
-const TimeAgo = ({ time, ...rest }) => {
+type Props = {
+  time: any;
+  [x: string]: any;
+};
+
+const TimeAgo: React.FC<Props> = ({ time, ...rest }) => {
   return <div {...rest}>{fromNow(time)}</div>;
 };
 

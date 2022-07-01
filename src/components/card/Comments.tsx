@@ -1,6 +1,12 @@
 import React from 'react';
 import commentsLabel from '../../utils/commentsLabel';
-const Comments = ({ nro, ...rest }) => {
+
+type Props = {
+  nro: any;
+  [x: string]: any;
+};
+
+const Comments: React.FC<Props> = ({ nro, ...rest }) => {
   return <div {...rest}>{commentsLabel(nro)}</div>;
 };
 

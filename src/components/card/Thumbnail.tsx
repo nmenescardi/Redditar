@@ -1,7 +1,13 @@
 import React from 'react';
 import isValidURL from '../../utils/urlValidator';
 
-const Thumbnail = ({ src, alt, ...rest }) => {
+type Props = {
+  src: any;
+  alt: any;
+  [x: string]: any;
+};
+
+const Thumbnail: React.FC<Props> = ({ src, alt, ...rest }) => {
   return (
     <>
       {src && isValidURL(src) && (
