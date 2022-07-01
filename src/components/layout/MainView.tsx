@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Home from './Home';
 
-const MainView = () => {
+const MainView: React.FC = () => {
   return (
     <main className="main-view">
       <Sidebar />

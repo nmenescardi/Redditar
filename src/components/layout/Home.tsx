@@ -1,14 +1,19 @@
 import React from 'react';
 import Post from '../post/Post';
-
 import { connect } from 'react-redux';
 import {
   getSinglePost,
   isSidebarOpen,
   getSelectedPostId,
 } from '../../store/posts/selector';
+import { PostData, Store } from '../../types';
 
-const Home = ({ post, sidebarOpen }) => {
+type Props = {
+  post: PostData;
+  sidebarOpen: boolean;
+};
+
+const Home: React.FC<Props> = ({ post, sidebarOpen }) => {
   return (
     <section className={`home ${sidebarOpen ? 'home--full' : null} `}>
       <div className="home__inner">
@@ -27,11 +32,11 @@ const Home = ({ post, sidebarOpen }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Store) => {
   return {
     post: getSinglePost(state, getSelectedPostId(state)),
     sidebarOpen: isSidebarOpen(state),
   };
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Home as any);
