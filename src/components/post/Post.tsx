@@ -2,8 +2,13 @@ import React from 'react';
 import fromNow from '../../utils/fromNow';
 import isValidURL from '../../utils/urlValidator';
 import commentsLabel from '../../utils/commentsLabel';
+import { PostData } from '../../types';
 
-const Post = ({ post }) => {
+type Props = {
+  post: PostData;
+};
+
+const Post: React.FC<Props> = ({ post }) => {
   return (
     <div className="post">
       <div className="post__wrapper">
