@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { layoutToggleSidebar } from '../../store/posts/actions';
 
-const Navbar = ({ layoutToggleSidebar }) => {
+type Props = {
+  layoutToggleSidebar: () => { type: string };
+};
+
+const Navbar: React.FC<Props> = ({ layoutToggleSidebar }) => {
   return (
     <section className="navbar" onClick={layoutToggleSidebar}>
       <div className="navbar__menu">
