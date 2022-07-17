@@ -8,7 +8,11 @@ type Props = {
 
 const Navbar: React.FC<Props> = ({ layoutToggleSidebar }) => {
   return (
-    <section className="navbar" onClick={layoutToggleSidebar}>
+    <section
+      className="navbar"
+      data-testid="navbar"
+      onClick={layoutToggleSidebar}
+    >
       <div className="navbar__menu">
         <div className="navbar__bar"></div>
         <div className="navbar__bar"></div>
