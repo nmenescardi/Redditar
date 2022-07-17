@@ -8,21 +8,17 @@ import { Provider } from 'react-redux';
 import Store from '../store';
 
 describe('testing the main view', () => {
-  let mainView;
+  const store = Store();
+  const mainView = render(
+    <Provider store={store.store}>
+      <Redditar />
+    </Provider>
+  );
 
-  beforeEach(() => {
-    const store = Store();
-
-    mainView = render(
-      <Provider store={store.store}>
-        <Redditar />
-      </Provider>
-    );
-  });
-
-  it('renders welcome message', async () => {
+  it('check main title element', async () => {
     const title = await mainView.findByTestId('h1');
     expect(title).toBeInTheDocument();
+    expect(title).toHaveTextContent('Redditar');
   });
 
   it('debugs', async () => {
