@@ -12,7 +12,7 @@ type Props = {
 
 const Sidebar: React.FC<Props> = ({ sidebarOpen }) => {
   return (
-    <section className={`sidebar ${sidebarOpen ? 'sidebar--open' : null} `}>
+    <section className={`sidebar ${sidebarOpen ? 'sidebar--open' : null}`}>
       <Navbar />
       <CardList />
 
