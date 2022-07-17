@@ -14,7 +14,9 @@ const Navbar: React.FC<Props> = ({ layoutToggleSidebar }) => {
         <div className="navbar__bar"></div>
         <div className="navbar__bar"></div>
       </div>
-      <h1 className="navbar__title">Redditar</h1>
+      <h1 className="navbar__title" data-testid="h1">
+        Redditar
+      </h1>
     </section>
   );
 };
