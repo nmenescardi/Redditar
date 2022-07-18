@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { expect } from 'chai';
 import {
   postSetData,
