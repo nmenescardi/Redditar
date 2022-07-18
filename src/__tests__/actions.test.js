@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { expect } from 'chai';
+
 import {
   postSetData,
   postSetLoading,
@@ -11,14 +11,14 @@ import { Action } from '../enums';
 
 describe('Store Actions', () => {
   test('postSetData contains the proper action type', () => {
-    expect(postSetData()).contains({
+    expect(postSetData()).toMatchObject({
       type: Action.POSTS_SET_DATA,
     });
   });
 
   test('postSetLoading contains the proper action type and return proper payload', () => {
     const testObj = (loadingFlag) =>
-      expect(postSetLoading(loadingFlag)).to.deep.equals({
+      expect(postSetLoading(loadingFlag)).toMatchObject({
         payload: loadingFlag,
         type: Action.POSTS_SET_LOADING,
       });
@@ -29,7 +29,7 @@ describe('Store Actions', () => {
 
   test('postDismiss: proper action type and payload', () => {
     const postIDs = [1, 4, 33, 55];
-    expect(postDismiss(postIDs)).to.deep.equals({
+    expect(postDismiss(postIDs)).toMatchObject({
       payload: postIDs,
       type: Action.POSTS_DISMISS,
     });
@@ -37,7 +37,7 @@ describe('Store Actions', () => {
 
   test('postDismiss: Single ID return array as payload', () => {
     const postIDs = 1;
-    expect(postDismiss(postIDs)).to.deep.equals({
+    expect(postDismiss(postIDs)).toMatchObject({
       payload: [postIDs],
       type: Action.POSTS_DISMISS,
     });
