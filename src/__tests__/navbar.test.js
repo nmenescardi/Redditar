@@ -6,6 +6,7 @@ import { render } from '@testing-library/react';
 import Navbar from '../components/navbar/Navbar';
 import ProviderMock from '../__mocks__/ProviderMock';
 import { layoutToggleSidebar } from '../store/posts/actions';
+import { create } from 'react-test-renderer';
 
 describe('testing the sidebar', () => {
   const getElements = () => {
@@ -31,5 +32,16 @@ describe('testing the sidebar', () => {
     mainSection.click();
 
     // TODO: check the store to see the changes
+  });
+});
+
+describe('<Navbar /> Snapshot', () => {
+  test('Navbar UI rendering correctly', () => {
+    const navbar = create(
+      <ProviderMock>
+        <Navbar />
+      </ProviderMock>
+    );
+    expect(navbar.toJSON()).toMatchSnapshot();
   });
 });

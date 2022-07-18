@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> Snapshot Navbar UI rendering correctly 1`] = `
+<section
+  className="navbar"
+  data-testid="navbar"
+  onClick={[Function]}
+>
+  <div
+    className="navbar__menu"
+  >
+    <div
+      className="navbar__bar"
+    />
+    <div
+      className="navbar__bar"
+    />
+    <div
+      className="navbar__bar"
+    />
+  </div>
+  <h1
+    className="navbar__title"
+    data-testid="h1"
+  >
+    Redditar
+  </h1>
+</section>
+`;
