@@ -4,18 +4,15 @@
 
 import { render } from '@testing-library/react';
 import Navbar from '../components/navbar/Navbar';
-import { Provider } from 'react-redux';
-import Store from '../store';
+import ProviderMock from '../__mocks__/ProviderMock';
 import { layoutToggleSidebar } from '../store/posts/actions';
-
-const store = Store();
 
 describe('testing the sidebar', () => {
   const getElements = () => {
     const sidebar = render(
-      <Provider store={store.store}>
+      <ProviderMock>
         <Navbar layoutToggleSidebar={layoutToggleSidebar}></Navbar>
-      </Provider>
+      </ProviderMock>
     );
 
     return { sidebar: sidebar, container: sidebar.container };

@@ -1,15 +1,13 @@
 import { render } from '@testing-library/react';
 import Sidebar from '../components/layout/Sidebar';
-import { Provider } from 'react-redux';
-import Store from '../store';
+import ProviderMock from '../__mocks__/ProviderMock';
 
 describe('testing the sidebar', () => {
   const getMainContainer = (sidebarOpen = true) => {
-    const store = Store();
     const sidebar = render(
-      <Provider store={store.store}>
+      <ProviderMock>
         <Sidebar sidebarOpen={sidebarOpen}></Sidebar>
-      </Provider>
+      </ProviderMock>
     );
 
     const { container } = sidebar;

@@ -5,7 +5,7 @@
 import postsJson from './fixtures/posts.json';
 import Card from '../components/card/Card';
 import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
+import ProviderMock from '../__mocks__/ProviderMock';
 import Store from '../store';
 import { postSetData } from '../store/posts/actions';
 import fromNow from '../utils/fromNow';
@@ -20,9 +20,9 @@ describe('Single Card', () => {
 
   it('should render its props', () => {
     const card = render(
-      <Provider store={store.store}>
+      <ProviderMock store={store.store}>
         <Card postId={firstPost.id}></Card>
-      </Provider>
+      </ProviderMock>
     );
 
     const comments = card.container.querySelector('.card__comments');

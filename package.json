@@ -39,6 +39,13 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "rules": {
+          "jest/no-mocks-import": "off"
+        }
+      }
     ]
   },
   "browserslist": {

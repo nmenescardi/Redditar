@@ -4,15 +4,13 @@
 
 import { render } from '@testing-library/react';
 import Redditar from '../Redditar';
-import { Provider } from 'react-redux';
-import Store from '../store';
+import ProviderMock from '../__mocks__/ProviderMock';
 
 describe('testing the main view', () => {
-  const store = Store();
   const mainView = render(
-    <Provider store={store.store}>
+    <ProviderMock>
       <Redditar />
-    </Provider>
+    </ProviderMock>
   );
 
   it('check main title element', async () => {
