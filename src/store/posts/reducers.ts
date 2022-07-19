@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { Action } from '../../enums';
 
-const postsInitialState = {
+export const postsInitialState = {
   posts: [],
   loading: false,
 };
 
-function postsReducer(state = postsInitialState, action: any) {
+export function postsReducer(state = postsInitialState, action: any) {
   switch (action.type) {
     case Action.POSTS_SET_DATA:
       return {
