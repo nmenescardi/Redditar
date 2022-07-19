@@ -9,6 +9,7 @@ import {
   postSetLoading,
   visitedAddPost,
   postDismiss,
+  layoutToggleSidebar,
 } from '../store/posts/actions';
 import postsJson from './fixtures/posts.json';
 
@@ -101,5 +102,13 @@ describe('App Reducer', () => {
       expect(reducedState.dismissed).toContain(firstPostID);
       expect(reducedState.dismissed).toContain(secondPostID);
     });
+  });
+
+  it('Should toggle the sidebar using the layoutToggleSidebar Action Creator', () => {
+    let reducedState = appReducer(initialState, layoutToggleSidebar());
+    expect(reducedState.sidebarOpen).toStrictEqual(false);
+
+    reducedState = appReducer(reducedState, layoutToggleSidebar());
+    expect(reducedState.sidebarOpen).toStrictEqual(true);
   });
 });
