@@ -25,14 +25,14 @@ export function postsReducer(state = postsInitialState, action: any) {
   }
 }
 
-const appInitialState = {
+export const appInitialState = {
   selectedPostId: '',
   visited: [],
   dismissed: [],
   sidebarOpen: true,
 };
 
-function appReducer(state = appInitialState, action: any) {
+export function appReducer(state = appInitialState, action: any) {
   switch (action.type) {
     case Action.VISITED_ADD_POST:
       return {
