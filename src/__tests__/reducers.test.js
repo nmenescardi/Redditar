@@ -10,6 +10,7 @@ import {
   visitedAddPost,
   postDismiss,
   layoutToggleSidebar,
+  selectPost,
 } from '../store/posts/actions';
 import postsJson from './fixtures/posts.json';
 
@@ -110,5 +111,13 @@ describe('App Reducer', () => {
 
     reducedState = appReducer(reducedState, layoutToggleSidebar());
     expect(reducedState.sidebarOpen).toStrictEqual(true);
+  });
+
+  it('Should select posts the selectPost Action Creator', () => {
+    let reducedState = appReducer(initialState, selectPost(firstPostID));
+    expect(reducedState.selectedPostId).toEqual(firstPostID);
+
+    reducedState = appReducer(reducedState, selectPost(secondPostID));
+    expect(reducedState.selectedPostId).toEqual(secondPostID);
   });
 });
