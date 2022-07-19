@@ -16,7 +16,11 @@ const Store = () => {
   };
   const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-  const middlewares = [thunkMiddleware, logger, dismissAllMiddleware];
+  const middlewares = [thunkMiddleware, dismissAllMiddleware];
+  if (process.env.NODE_ENV === 'development') {
+    middlewares.push(logger);
+  }
+
   const middleWareEnhancer = applyMiddleware(...middlewares);
   const store = createStore(
     persistedReducer,
