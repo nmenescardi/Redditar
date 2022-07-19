@@ -8,6 +8,7 @@ import {
   postSetData,
   postSetLoading,
   visitedAddPost,
+  postDismiss,
 } from '../store/posts/actions';
 import postsJson from './fixtures/posts.json';
 
@@ -46,7 +47,7 @@ describe('App Reducer', () => {
     );
   });
 
-  describe('Should add mark a posts as visited using the visitedAddPost Action Creator', () => {
+  describe('Should mark posts as visited using the visitedAddPost Action Creator', () => {
     it('visitedAddPost - mark initial post as visited', () => {
       const mockedVisitedPostAction = visitedAddPost(firstPostID);
 
@@ -71,6 +72,34 @@ describe('App Reducer', () => {
       expect(reducedState.visited).toHaveLength(2);
       expect(reducedState.visited).toContain(firstPostID);
       expect(reducedState.visited).toContain(secondPostID);
+    });
+  });
+
+  describe('Should mark posts as dismissed using the postDismiss Action Creator', () => {
+    it('postDismiss - mark initial post as dismissed', () => {
+      const mockedDismissedPostAction = postDismiss(firstPostID);
+
+      const reducedState = appReducer(initialState, mockedDismissedPostAction);
+
+      expect(reducedState.dismissed[0]).toEqual(firstPostID);
+    });
+
+    it('postDismiss - mark several posts as dismissed without repeated IDs', () => {
+      let mockedDismissedPostAction = postDismiss(firstPostID);
+      let reducedState = appReducer(initialState, mockedDismissedPostAction);
+
+      mockedDismissedPostAction = postDismiss(secondPostID);
+      reducedState = appReducer(reducedState, mockedDismissedPostAction);
+
+      mockedDismissedPostAction = postDismiss(firstPostID);
+      reducedState = appReducer(reducedState, mockedDismissedPostAction);
+
+      mockedDismissedPostAction = postDismiss(secondPostID);
+      reducedState = appReducer(reducedState, mockedDismissedPostAction);
+
+      expect(reducedState.dismissed).toHaveLength(2);
+      expect(reducedState.dismissed).toContain(firstPostID);
+      expect(reducedState.dismissed).toContain(secondPostID);
     });
   });
 });
