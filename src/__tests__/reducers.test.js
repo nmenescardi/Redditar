@@ -31,6 +31,17 @@ describe('Post Reducer', () => {
     );
   });
 
+  it('Should add initial posts data using the postSetData Action Creator', () => {
+    const mockedPostDataAction = postSetData(posts);
+
+    const reducedState = postsReducer(initialState, mockedPostDataAction);
+
+    console.log('reducedState', reducedState);
+    expect(reducedState.posts.length).toEqual(posts.length);
+    expect(reducedState.posts[0].data.id).toEqual(posts[0].data.id);
+    expect(reducedState.posts[5].data.id).toEqual(posts[5].data.id);
+  });
+
   it('Should toggle loading flag using the postSetLoading Action Creator', () => {
     let mockedLoadingAction = postSetLoading(true);
     let reducedState = postsReducer(initialState, mockedLoadingAction);
