@@ -47,7 +47,10 @@ const Card: React.FC<Props> = ({
   layoutToggleSidebar,
 }) => {
   return (
-    <div className={`card ${wasVisited && 'card--visited'}`}>
+    <div
+      className={`card ${wasVisited && 'card--visited'}`}
+      data-testid="card-container"
+    >
       <div
         className="card__header"
         onClick={() => {
