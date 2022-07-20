@@ -82,7 +82,11 @@ const Card: React.FC<Props> = ({
       </div>
 
       <div className="card__footer">
-        <div className="card__dismiss" onClick={() => postDismiss(post.id)}>
+        <div
+          className="card__dismiss"
+          onClick={() => postDismiss(post.id)}
+          data-testid="card-dismiss-button"
+        >
           <FaTimes />
           <span>Dismiss</span>
         </div>

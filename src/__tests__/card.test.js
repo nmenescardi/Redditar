@@ -11,7 +11,7 @@ import { postSetData } from '../store/posts/actions';
 import fromNow from '../utils/fromNow';
 import userEvent from '@testing-library/user-event';
 
-let card, posts, store, firstPost, cardHeader;
+let card, posts, store, firstPost, cardHeader, dismissButton;
 beforeEach(() => {
   posts = postsJson.data.children;
 
@@ -27,6 +27,7 @@ beforeEach(() => {
   );
 
   cardHeader = screen.queryByTestId('card-header');
+  dismissButton = screen.getByTestId('card-dismiss-button');
 });
 
 describe('Single Card', () => {
@@ -47,7 +48,7 @@ describe('Single Card', () => {
     expect(title).toHaveTextContent(firstPost.title);
   });
 
-  it('Check onClick behavior: card shown visited', () => {
+  it('Checks onClick behavior: card shown visited', () => {
     // Empty at the beginning
     expect(store.store.getState().app.visited.length).toEqual(0);
 
@@ -57,7 +58,7 @@ describe('Single Card', () => {
     expect(store.store.getState().app.visited).toContain(firstPost.id);
   });
 
-  it('Check onClick behavior: clicking more than once only add to visited just once', () => {
+  it('Checks onClick behavior: clicking more than once only add to visited just once', () => {
     userEvent.click(cardHeader);
     expect(store.store.getState().app.visited.length).toEqual(1);
 
@@ -66,8 +67,28 @@ describe('Single Card', () => {
     expect(store.store.getState().app.visited.length).toEqual(1);
   });
 
-  it.todo('Check onClick behavior: post details visible');
-  it.todo('Check onClick behavior: toggle layout on mobile');
+  it('Checks onClick behavior: post details visible', () => {
+    // Empty
+    expect(store.store.getState().app.selectedPostId).toBe('');
 
-  it.todo('Check onClick Dismiss button');
+    userEvent.click(cardHeader);
+    expect(store.store.getState().app.selectedPostId).toBe(firstPost.id);
+  });
+
+  it('Checks onClick Dismiss button', () => {
+    expect(store.store.getState().app.dismissed.length).toEqual(0);
+    userEvent.click(dismissButton);
+
+    expect(store.store.getState().app.dismissed.length).toEqual(1);
+    expect(store.store.getState().app.dismissed).toContain(firstPost.id);
+  });
+
+  it('Checks onClick Dismiss button: clicking more than once only add to dismissed just once', () => {
+    userEvent.click(dismissButton);
+    expect(store.store.getState().app.dismissed.length).toEqual(1);
+
+    userEvent.click(dismissButton);
+    // Still only one
+    expect(store.store.getState().app.dismissed.length).toEqual(1);
+  });
 });
