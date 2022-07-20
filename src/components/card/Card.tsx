@@ -53,6 +53,7 @@ const Card: React.FC<Props> = ({
     >
       <div
         className="card__header"
+        data-testid="card-header"
         onClick={() => {
           visitedAddPost(post.id);
           selectPost(post.id);
