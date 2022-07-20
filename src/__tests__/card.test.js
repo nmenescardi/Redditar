@@ -10,21 +10,24 @@ import Store from '../store';
 import { postSetData } from '../store/posts/actions';
 import fromNow from '../utils/fromNow';
 
-describe('Single Card', () => {
-  const posts = postsJson.data.children;
+let card, posts, store, firstPost;
+beforeEach(() => {
+  posts = postsJson.data.children;
 
-  const store = Store();
+  store = Store();
   store.store.dispatch(postSetData(posts));
 
-  const firstPost = posts[0].data;
+  firstPost = posts[0].data;
 
+  card = render(
+    <ProviderMock store={store.store}>
+      <Card postId={firstPost.id}></Card>
+    </ProviderMock>
+  );
+});
+
+describe('Single Card', () => {
   it('should render its props', () => {
-    const card = render(
-      <ProviderMock store={store.store}>
-        <Card postId={firstPost.id}></Card>
-      </ProviderMock>
-    );
-
     const comments = card.container.querySelector('.card__comments');
     expect(comments).toHaveTextContent('958 Comments');
 
